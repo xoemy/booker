@@ -1,16 +1,3 @@
-FROM ubuntu:latest
-
-
-RUN apt-get update && \
-    apt-get install -y shellinabox && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-
-RUN echo 'root:ppp111' | chpasswd
-
-
-EXPOSE 22
-
-
-CMD ["/usr/bin/shellinaboxd", "-t", "-s", "/:LOGIN"]
+FROM mjjonone/mjj:amd64
+ENV SERVER_PORT=7860
+RUN chmod 777 /app
